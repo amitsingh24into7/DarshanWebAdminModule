@@ -1,0 +1,49 @@
+<mat-card class="example-card" >
+    <mat-card-content>
+
+        <form   class="example-form" [formGroup]="donationurlForm" >
+            <mat-form-field class="example-full-width">
+              <mat-label>Title</mat-label>
+              <input required formControlName="title" name="title" type="text" matInput placeholder="Title">
+              
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Currency</mat-label>
+                <!-- <input required formControlName ="url"  type="text" matInput placeholder="Currency" name="url"  > -->
+                <select name="url" formControlName ="url" placeholder="Currency"  matNativeControl required>
+                  <option value="USD">USD</option>
+                  <!-- <option value="No">No</option> -->
+                  
+                </select>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Amount</mat-label>
+                <input required formControlName ="amount"  type="text" matInput placeholder="Amount" name="amount"  >
+                
+              </mat-form-field>
+              
+              
+              <mat-form-field class="example-full-width">
+                <mat-label>Long Description</mat-label>
+                <textarea  formControlName ="l_Description" name="l_Description" matInput placeholder="Long Description"></textarea>
+                
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Remarks</mat-label>
+                <textarea  formControlName ="remarks" name="remarks" matInput placeholder="Remarks"></textarea>
+                
+              </mat-form-field>
+               <!--<div>
+                <button mat-raised-button color="warn" (click)="onClickSubmit(userlogin.value)"  matStepperNext>Next</button> -->
+                <!-- [disabled]="addeventForm.invalid" -->
+               
+              <!-- </div> -->
+              <mat-dialog-actions align="end">
+                <button [mat-dialog-close]="true" [disabled]="donationurlForm.invalid" mat-raised-button color="warn" (click)="onClickSubmit()" >Submit</button>
+
+                <button mat-button mat-dialog-close>Cancel</button>
+               
+              </mat-dialog-actions>
+          </form>
+    </mat-card-content>
+</mat-card>

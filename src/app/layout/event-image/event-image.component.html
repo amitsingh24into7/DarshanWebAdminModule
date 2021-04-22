@@ -1,0 +1,74 @@
+<mat-form-field *ngIf="!imagetype" style="width: 350px">
+
+    <div class="myfilebrowser">
+      <div>
+        <img style="width: 100px;" [src]="img12_Base64Path">
+      </div>
+      <mat-toolbar>
+
+        <!-- Readonly Input to show File names -->
+        <!-- <input matInput [(ngModel)]="myfilename" readonly name="memberContactNo" /> -->
+        <input matInput value=" Main Image  " readonly name="memberContactNo" />
+        <label style="font-size: 10px;margin-right: 10px;">( size should be 1000*250 px)</label>
+        <!-- Browse Button -->
+        <button mat-flat-button color="primary">
+          Browse
+        </button>
+
+      </mat-toolbar>
+     
+      <!-- Fetch selected filed on change -->
+      <input  type="file" #UploadFileInput id="fileUpload" (change)="fileChangeEvent($event)" name="fileUpload"
+        multiple="multiple" accept="image/*" />
+
+    </div>
+    
+</mat-form-field>
+
+    <button  *ngIf="!imagetype" (click)="submitfunction()" style="width: 100%;" mat-dialog-close mat-flat-button color="primary">
+        Submit
+       </button>
+<!-- ---------------------------Image type 13---------------------- -->
+<div style="float: left;"  *ngFor="let imageurl of imageresp" >
+    <img *ngIf="imageurl.EventImageType==13"  style="width: 100px;float: left; margin-right: 10px;" [src]="imagelocation+imageurl.ImageURL">
+    <span style="background-color: red;
+    border-radius: 13px;
+    position: relative;
+    right: 10px;
+    bottom: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;" *ngIf="imageurl.EventImageType==13" class="material-icons">
+        close
+        </span>
+</div>
+<div *ngIf="imagetype" >
+    <img  *ngFor="let imgval of img13_Base64Path; let i=index;" style="width: 100px;" src="{{imgval}}">
+  </div>
+<mat-form-field style="width: 350px">
+                 
+    <div *ngIf="imagetype" class="myfilebrowser">
+     
+      <mat-toolbar>
+
+        <!-- Readonly Input to show File names -->
+        <!-- <input matInput [(ngModel)]="thmyfilename" readonly name="memberContactNo" /> -->
+        <input matInput value=" Other Image  " readonly name="memberContactNo" />
+        <!-- Browse Button -->
+        <button mat-flat-button color="primary">
+          Browse
+        </button>
+
+      </mat-toolbar>
+     
+      <!-- Fetch selected filed on change -->
+      <input type="file" #thUploadFileInput id="thfileUpload" (change)="thfileChangeEvent($event)" name="thfileUpload"
+        multiple="multiple" accept="image/*" />
+
+    </div>
+
+</mat-form-field>
+    
+        <button  *ngIf="imagetype" (click)="thsubmitfunction()" style="width: 100%;" mat-dialog-close mat-flat-button color="primary">
+            Submit
+           </button>

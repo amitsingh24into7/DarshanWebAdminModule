@@ -1,0 +1,23 @@
+<mat-card class="example-card" style="background-color: #7a7877c7;">
+    <mat-card-header>
+      
+      <mat-card-title>Aarti</mat-card-title>
+     
+    </mat-card-header>
+</mat-card>
+
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+    <!-- <div (click)="reminderFunction()" style="cursor: pointer;" fxFlex > -->
+        <mat-card  (click)="reminderFunction()" style="float: left;width: 25%;background: #3f51b5;margin-right: 10px;padding: 40px;text-align: center;margin-top: 10px;;color:white;cursor: pointer;" class="example-card" >
+            Reminder
+        </mat-card>
+    <!-- </div> -->
+    <!-- <div (click)="reminderFunction()" style="cursor: pointer;" fxFlex > -->
+        <mat-card (click)="goliveFunction()" style="float: left;width: 25%;background: #3f51b5;margin-right: 10px;padding: 40px;text-align: center;margin-top: 10px;color:white;cursor: pointer;" class="example-card" >
+            Go Live
+        </mat-card>
+        <mat-card (click)="liveFunction()"  style="float: left;background: #3f51b5;width: 25%;margin-right: 10px;padding: 40px;text-align: center;margin-top: 10px;color:white;cursor: pointer;" class="example-card" >
+            Live
+        </mat-card>
+     <!-- </div> -->
+</div>

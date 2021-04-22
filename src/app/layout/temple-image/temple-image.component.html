@@ -1,0 +1,31 @@
+<mat-card class="example-card" style="background-color: #7a7877c7;">
+    <mat-card-header>
+      
+      <mat-card-title ><a href="#/manage-temple">
+        <button style=" margin-right: 10px;" mat-raised-button color="warn" >
+          Back
+         </button>
+      </a> Image</mat-card-title>
+      <div style=" width: 85%;    text-align: end;" fxFlex>
+        
+          <!-- <button style=" margin-right: 10px;" mat-raised-button color="warn" (click)="addTempleImage()">
+            Add Template Image
+           </button> -->
+    </div>
+    </mat-card-header>
+</mat-card>
+
+
+<!-- <mat-card class="mat-elevation-z4" *ngFor="let imageof of templeimageobj">
+  
+  <img mat-card-image src="{{imagelocation+imageof.ImageURL}}">
+  
+ 
+</mat-card> -->
+
+<mat-card  *ngFor="let imageof of templeimageobj" class="bodyof example-card">
+ 
+  <img mat-card-image src="{{imagelocation+imageof.ImageURL}}">
+  
+ 
+</mat-card>

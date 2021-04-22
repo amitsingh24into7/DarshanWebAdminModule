@@ -1,0 +1,14 @@
+.bodyof {
+    max-width: 394px;
+    float: left;
+    height: 400px;
+    margin: 5px;
+  }
+  
+  .example-header-image {    
+    background-size: cover;
+  }
+  .mat-card>:last-child:not(.mat-card-footer) {
+    margin-bottom: 0;
+    height: inherit;
+}

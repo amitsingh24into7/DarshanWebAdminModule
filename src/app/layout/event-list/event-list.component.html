@@ -1,0 +1,125 @@
+<div class="mb-20" flFlex flexLayout="row" flexLayout.lt-md="column">
+    <div style="    text-align: end;" fxFlex>
+        <button mat-raised-button color="warn" (click)="addEventFunction()">
+           Add Event
+          </button>
+    </div>
+</div>
+<!-- <div class="mb-20" flFlex flexLayout="row" flexLayout.lt-md="column">
+    <div style="    text-align: center;" fxFlex>
+       <h3>Event List</h3> 
+    </div>
+</div> -->
+<mat-card class="example-card" style="background-color: #7a7877c7;">
+    <mat-card-header>
+      
+      <mat-card-title>Event List</mat-card-title>
+     
+    </mat-card-header>
+</mat-card>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="#" >
+    <th style="width: 50px;" mat-header-cell *matHeaderCellDef> No. </th>
+    <td style="width: 50px;" mat-cell *matCellDef="let element;let i = index;"> {{i+1}} </td>
+  </ng-container>
+  
+   <!-- Name Column -->
+  <ng-container matColumnDef="EventImage" >
+    <th style="width: 100px;" mat-header-cell *matHeaderCellDef> Event Image </th>
+    <td style="width: 100px;" mat-cell *matCellDef="let element"> <img class="mr-2" src="{{imglocation+element.ImageURL}}?{{timestamp}}" style="width: 70px" /> </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="EventsTitle" >
+    <th style="width: 300px;" mat-header-cell *matHeaderCellDef> Event Title </th>
+    <td style="width: 300px;" mat-cell *matCellDef="let element"> {{element.EventsTitle}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="EventsShortDesc">
+    <th  style="width: 300px;" mat-header-cell *matHeaderCellDef> Short Desc </th>
+    <td  style="width: 300px;" mat-cell *matCellDef="let element"> 
+      {{element.EventsShortDesc}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="EventFromDate">
+    <th  style="width: 200px;" mat-header-cell *matHeaderCellDef> From Date </th>
+    <td  style="width: 200px;" mat-cell *matCellDef="let element"> {{element.EventFromDate}} </td>
+  </ng-container>
+  <ng-container matColumnDef="EventToDate">
+      <th  style="width: 200px;" mat-header-cell *matHeaderCellDef> To Date </th>
+      <td  style="width: 200px;" mat-cell *matCellDef="let element"> {{element.EventToDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th  style="width: 200px;" mat-header-cell *matHeaderCellDef> Action </th>
+      <td  style="width: 200px;" mat-cell *matCellDef="let element"> 
+          <!-- <label title="Edit" (click)="editFunction(element)" style="padding: 5px; cursor: pointer;">
+              <span class="material-icons">
+                  edit
+                  </span>
+          </label> -->
+           <label title="Delete" (click)="deleteFunction(element)" style="padding: 5px;cursor: pointer;">
+              <span class="material-icons">
+                  delete
+                  </span>
+          </label>
+           <label title="Copy" (click)="copyFunction(element)" style="padding: 5px;cursor: pointer;">
+              <span class="material-icons">
+                  content_copy
+                  </span>
+          </label>
+           <label (click)="detailFunction(element)" title="View" style="padding: 5px;cursor: pointer;">
+              <!-- <span class="material-icons">
+                  visibility
+                  </span> -->
+                  <span class="material-icons">
+                    edit
+                      </span>
+          </label>    
+      </td>
+    </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[10, 20,50]" showFirstLastButtons></mat-paginator>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+

@@ -1,0 +1,70 @@
+<mat-card class="example-card" style="background-color: #7a7877c7;">
+    <mat-card-header>
+      
+      <mat-card-title>Manage Template</mat-card-title>
+      <div style=" width: 80%;    text-align: end;" fxFlex>
+       
+        <button style=" margin-right: 10px;" mat-raised-button color="warn" (click)="addtemplateFunction()">
+          Add Template 
+         </button>
+  </div>
+    </mat-card-header>
+</mat-card>
+<table style="width: 100%;" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="#" >
+      <th style="width: 50px;" mat-header-cell *matHeaderCellDef> No. </th>
+      <td style="width: 50px;" mat-cell *matCellDef="let element;let i = index;"> {{i+1}} </td>
+    </ng-container>
+    
+     <!-- Name Column -->
+    <ng-container matColumnDef="subject" >
+      <th style="width: 400px;" mat-header-cell *matHeaderCellDef>Template Name</th>
+      <td style="width: 400px;" mat-cell *matCellDef="let element">  {{element.subject}}</td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="DateTime" >
+      <th style="width: 150px;" mat-header-cell *matHeaderCellDef> Date & Time </th>
+      <td style="width: 150px;" mat-cell *matCellDef="let element"> {{element.created_date}} </td>
+    </ng-container>
+   <!-- Name Column -->
+   <ng-container matColumnDef="type" >
+    <th style="width: 150px;" mat-header-cell *matHeaderCellDef> Type </th>
+    <td style="width: 150px;" mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+ <!-- Name Column -->
+   
+      <ng-container matColumnDef="Action">
+        <th  style="width: 200px;" mat-header-cell *matHeaderCellDef> Action </th>
+        <td  style="width: 200px;" mat-cell *matCellDef="let element"> 
+          <label *ngIf="!element.id" title="Copy" (click)="copyFunction(element)" style="padding: 5px;cursor: pointer;">
+            <span class="material-icons">
+                content_copy
+                </span>
+        </label>
+            <label *ngIf="element.id" title="Edit" (click)="editFunction(element)" style="padding: 5px; cursor: pointer;">
+                <span class="material-icons">
+                    edit
+                </span>
+            </label>
+             <label  *ngIf="element.id" title="Delete" (click)="deleteFunction(element)" style="padding: 5px;cursor: pointer;">
+                <span class="material-icons">
+                    delete
+                    </span>
+            </label>
+             
+            <label (click)="detailFunction(element)" title="View" style="padding: 5px;cursor: pointer;">
+                <span class="material-icons">
+                    visibility
+                    </span>
+            </label> 
+        </td>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 20,50]" showFirstLastButtons></mat-paginator>

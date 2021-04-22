@@ -1,0 +1,110 @@
+
+<mat-card class="example-card" style="background-color: #7a7877c7;">
+    <mat-card-header>
+      
+      <mat-card-title ><a href="#/event-list">
+        <button style=" margin-right: 10px;" mat-raised-button color="warn" >
+          Back
+         </button>
+      </a> {{eventobj.EventsTitle}}</mat-card-title>
+      <div style=" width: 70%;    text-align: end;" fxFlex>
+        <!-- <button style=" margin-right: 10px;" mat-raised-button color="warn" (click)="addDonationFunction(eventobj)">
+           Add Donation
+          </button> -->
+          <button style=" margin-right: 10px;" mat-raised-button color="warn" (click)="addTimeFunction(eventobj)">
+            Add Time
+           </button>
+           
+           <button style=" margin-right: 10px;" color="warn" (click)="addeventImage(eventobj)"  mat-raised-button >Add Other Image</button>
+           <button style=" margin-right: 10px;" color="warn" (click)="opengalFunction(eventobj)"  mat-raised-button >Add Main Image</button>
+           <button  color="warn" (click)="openDonationUrlDialog(eventobj)"  mat-raised-button >Add Donation</button>
+           
+    </div>
+    </mat-card-header>
+</mat-card>
+<mat-card>
+  <img style="width: 100%;" src="{{imagelocation+eventobj.ImageURL}}?{{timestamp}}">  
+  <svg (click)="opengalFunction(eventobj)" style="cursor: pointer;float: right;position: inherit;margin-top: -26px;" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"/></svg> 
+
+
+  
+</mat-card>
+<mat-card style="margin-top: 5px;">
+    
+   <div style="background-color: #8f8d8cc7;min-height: 32px;padding: 5px;    border-radius: 5px;"><label><b>Event Title: </b>{{eventobj.EventsTitle}}</label>  <label align="end" title="Edit" (click)="editFunction(eventobj)" style="padding: 5px; cursor: pointer;float: right;">
+    <span class="material-icons">
+        edit
+        </span>
+</label></div>
+
+<div style="background-color: #8f8d8cc7;min-height: 32px;padding: 5px; margin-top: 10px;    border-radius: 5px;">
+   <b>Event Time: </b><span class="material-icons">
+    schedule
+    </span>
+    <label>{{eventobj.EventFromDate | date: 'dd-MM-yyyy'}} - {{eventobj.EventToDate | date: 'dd-MM-yyyy'}}</label>
+</div>
+    <mat-card style="background-color: #8f8d8cc7; margin-top: 10px;">
+    <mat-list>
+        <button style="z-index: 100; float: right; " mat-raised-button color="warn" (click)="addTimeFunction(eventobj)">
+            Add Time
+           </button>
+        <mat-list-item>
+        <b>Scheduled Time</b>
+       
+    </mat-list-item>
+        <mat-list-item *ngFor="let item of event_timeobj"> 
+            <p style="width: 70%;">{{item.Day}} </p>
+            <div style="width: 100%;">
+                <span class="material-icons">
+                    schedule
+                    </span>
+                    <label> {{item.EventsDate | date: 'dd-MM-yyyy'}}  Time From {{item.FromTime | date: 'HH:mm a'}} Time To {{item.ToTime | date: 'HH:mm a'}}</label>
+            </div>
+            <div style="width: 100%;" align="end">
+                <label (click)="edit_time_Function(item)"> <span class="material-icons">
+                    edit
+                    </span></label>
+                    <label (click)="delete_time_Function(item)">
+                    <span class="material-icons">
+                        delete
+                        </span>
+                        </label>
+            </div>
+        </mat-list-item>
+        
+       </mat-list>
+    </mat-card >
+<mat-card  style="background-color: #8f8d8cc7; margin-top: 10px;">
+
+   
+       <mat-list>
+
+        <button style="z-index: 100; float: right;"  color="warn" (click)="openDonationUrlDialog(eventobj)"  mat-raised-button >Add Donation</button>
+        <mat-list-item>
+            <b>Donation</b>
+        </mat-list-item>
+        <mat-list-item *ngFor="let item of resp_Donation_obj"> 
+           <p style="width: 70%;">{{item.title}} </p>
+            <div style="width: 100%;">
+                
+                    <label> {{item.payment_url}}   {{item.amount}}</label>
+            </div>
+            <div style="width: 100%;" align="end">
+                <label (click)="editD_utlFunction(item)"><span class="material-icons">
+                    edit
+                    </span></label>
+                    <label (click)="deleteD_utlFunction(item)"><span class="material-icons">
+                        delete
+                        </span></label>
+            </div>
+        </mat-list-item>
+        
+       </mat-list>
+    </mat-card >
+</mat-card>
+
+
+<mat-card style="margin-top: 5px;">
+    <b>Event Detail </b>
+    <div [innerHtml]="eventobj.EventsShortDesc"></div>
+ </mat-card>

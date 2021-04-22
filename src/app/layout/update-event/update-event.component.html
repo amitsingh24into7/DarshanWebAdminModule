@@ -1,0 +1,116 @@
+<mat-card class="example-card" style="background-color: #7a7877c7;">
+    <mat-card-header>
+      
+      <mat-card-title>Update Event</mat-card-title>
+     
+    </mat-card-header>
+</mat-card>
+<form  style="max-width: unset;" class="example-form" [formGroup]="addeventForm" >
+
+    <div class="example-container">
+      
+    
+
+
+      <mat-form-field  appearance="fill">
+        <mat-label>Event Title</mat-label>
+        <input required formControlName="EventsTitle" name="EventsTitle" type="text" matInput placeholder="Event Title">
+        
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Short Desc</mat-label>
+          <!-- <input formControlName ="EventsShortDesc"  type="text" matInput placeholder="Short Desc" name="EventsShortDesc"  > -->
+          <textarea required formControlName ="EventsShortDesc" name="EventsShortDesc" matInput placeholder="Short Desc"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Event Type</mat-label>
+     
+              <!-- <mat-select>
+                <mat-option  formControlName ="EventsType" name="EventsType"  *ngFor="let evnttype of dataSource" [value]="evnttype.ID">
+                  {{evnttype.ConfigDisplayVal}}
+                </mat-option>
+              </mat-select> -->
+              <select  name="EventsType"  formControlName ="EventsType" matNativeControl required>
+                  <option *ngFor="let evnttype of dataSource" [value]="evnttype.ID"> {{evnttype.ConfigDisplayVal}}</option>
+                  
+                  
+                </select>
+            
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Volunteering</mat-label>
+          
+              <select  name="isvolunteering"  formControlName ="isvolunteering" matNativeControl required>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                  
+                </select>
+           
+          
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Is Donation</mat-label>
+          
+              <select name="isDonation" formControlName ="isDonation"  matNativeControl required>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                  
+                </select>
+          
+          
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>From Date</mat-label>
+          <input readonly  required (dateChange)="changefdatefunction($event)" formControlName ="fpicker" name="fpicker" matInput [matDatepicker]="fpicker">
+          <!-- <input matInput  formControlName ="epicker" name="epicker" [matDatepicker]="picker" placeholder="Input & change events"
+          (dateChange)="datevalue('change', $event)"> -->
+          <mat-datepicker-toggle matSuffix [for]="fpicker"></mat-datepicker-toggle>
+          <mat-datepicker #fpicker></mat-datepicker>
+          
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>To Date</mat-label>
+          <input required [min]="tomindate" readonly matInput  formControlName ="tpicker" name="tpicker" [matDatepicker]="tpicker">
+          
+          <mat-datepicker-toggle matSuffix [for]="tpicker"></mat-datepicker-toggle>
+          <mat-datepicker #tpicker></mat-datepicker>
+          
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Photo Album name</mat-label>
+          <input formControlName ="p_album_n" name="p_album_n"  type="text" matInput placeholder="Photo Album name">
+          
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Photo Album url</mat-label>
+          <input formControlName ="p_url_n" name="p_url_n"  type="text" matInput placeholder="Photo Album url">
+          
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Video Album name</mat-label>
+          <input formControlName ="v_album_n" name="v_album_n" type="text" matInput placeholder="Video Album name">
+          
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Video Album url</mat-label>
+          <input formControlName ="v_url_n" name="v_url_n" type="text" matInput placeholder="Video Album url">
+          
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Long Description</mat-label>
+          <textarea  formControlName ="l_Description" name="l_Description" matInput placeholder="Long Description"></textarea>
+          
+        </mat-form-field>
+        <div>
+          <!-- <button mat-raised-button color="warn" (click)="onClickSubmit(userlogin.value)"  matStepperNext>Next</button> -->
+          <!-- [disabled]="addeventForm.invalid" -->
+         
+        </div>
+        <mat-dialog-actions align="end">
+            <button mat-dialog-close [disabled]="addeventForm.invalid" mat-raised-button color="warn" (click)="onClickSubmit()"  >Update</button>
+
+            <button mat-button mat-dialog-close>Cancel</button>
+           
+          </mat-dialog-actions>
+        </div>
+    </form>
